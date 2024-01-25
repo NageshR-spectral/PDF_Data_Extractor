@@ -12,7 +12,10 @@ Convert your PDF documents into structured JSON format. This tool leverages the 
 
 1. Clone the repository
 2. Install dependencies: `pip install -r requirements.txt`
-3. Run the converter: streamlit run app.py
+3. create .env file and add openai api key  as  openai_api_key = "<YOUR_API_KEY>".
+4. I have mentioned gpt-3.5-turbo model as model engine.
+5. You can change it to gpt-4 based on your requirements.
+6. Run the converter: streamlit run app.py
 
 ## Usage
 
