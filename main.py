@@ -11,24 +11,24 @@ class Main:
 
     def convert_pdf_to_text(self):
         
-
         # Display file path
         st.sidebar.subheader("File Information:")
-        st.sidebar.text(f"File Path: {self.file_path.name}")
+        st.sidebar.text(f"File Name: {self.file_path.name}")
 
         # PDF to Text Conversion
         st.header("PDF to Text Conversion:")
         pdf_to_text_button = st.button("Convert PDF to Text")
 
+        # Save the uploaded file to a temporary location
+        with open("temp_pdf.pdf", "wb") as f:
+            f.write(self.file_path.getvalue())
+
         if pdf_to_text_button:
-            st.subheader("Text Content:")
-            # Save the uploaded file to a temporary location
-            with open("temp_pdf.pdf", "wb") as f:
-                f.write(self.file_path.getvalue())
+            st.sidebar.subheader("Text Content:")
             loader = PyMuPDFLoader("temp_pdf.pdf")
             data = loader.load()
             content = data[0].page_content
-            st.text(content)
+            st.sidebar.text(content)
 
         # Chat Handling
         chat_button = st.button("Get JSON output")
@@ -45,7 +45,7 @@ class Main:
             # Loop through all pages and print the content
             for page_number, page in enumerate(pages, start=1):
                 page_content = page.page_content
-                st.text(f"Page {page_number} Content:\n{page_content}\n")
+                st.sidebar.text(f"Page {page_number} Content:\n{page_content}\n")
 
                 chat_response = chat_handler(page_content)
 

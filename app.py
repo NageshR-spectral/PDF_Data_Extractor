@@ -1,8 +1,15 @@
 import openai
 import streamlit as st
 from main import Main 
+from dotenv import load_dotenv
+import os
 
-openai.api_key = "Your_api_key"
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Set your OpenAI API key
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 def main():
@@ -15,7 +22,12 @@ def main():
 
     if file_path:
         main_obj = Main(file_path)
-        main_obj.convert_pdf_to_text()
+        # Check whether the temp file already exists
+        if "temp_pdf.pdf" in os.listdir():
+            os.remove("temp_pdf.pdf")  # Remove existing temporary file
+            main_obj.convert_pdf_to_text()
+        else:
+            main_obj.convert_pdf_to_text()
 
 if __name__ == "__main__":
     main()
