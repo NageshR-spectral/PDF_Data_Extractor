@@ -1,8 +1,6 @@
 import openai
 import base64
 
-openai_api_key = "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"
-# openai.api_key = "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"
 
 def chat_handler(text):
     model_engine = "gpt-3.5-turbo"  # Update with your desired OpenAI model
