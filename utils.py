@@ -1,7 +1,6 @@
 import openai
 import base64
 
-
 def chat_handler(text):
     model_engine = "gpt-3.5-turbo"  # Update with your desired OpenAI model
     content = """You are an expert in insurance field and an helpful assistant who analyze the text data extracted from the pdf or images and provides the output in JSON format.\nNow your task is to analyze the provided text and provide the output in JSON format based on your analysis.\nIt is important to make sure the output is clean and usable for business purposes.\nMaintain consistency in output format by preserving the sequence of extracted data.\nEnsure that the JSON output remains uniform across different inputs.\nIf there is no content, then keep the value null.\nMake sure the font remains the same while generating the output."""
